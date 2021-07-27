@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- 2. 必须是一个具备宽高的盒子 -->
+  <div id="main" style="width: 600px;height:400px;"></div>
+
+  <!-- 1. 下载引入 -->
+  <script src="./js/echarts.min.js"></script>
+
+  <script>
+    // 3. 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 4. 指定图表的配置项和数据
+    var option = {
+      // 调色盘，可以设置图表的样式
+      color: ['skyblue'],
+      // 标题的配置
+      title: {
+        text: '这是大标题'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          axisTick: {
+            alignWithLabel: true
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      // 图标数据项（将图表相关的数据）
+      series: [
+        {
+          name: '直接访问',
+          type: 'bar',
+          barWidth: '60%',
+          data: [10, 52, 200, 334, 390, 330, 220]
+        }
+      ]
+    };
+
+    // 5. 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  </script>
+
+</body>
+
+</html>
